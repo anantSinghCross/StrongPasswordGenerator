@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity">
+
+    <com.google.android.material.textview.MaterialTextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Password Generator"
+        android:fontFamily="@font/productsans"
+        android:layout_margin="30dp"
+        android:textSize="23dp"
+        android:layout_centerHorizontal="true"
+        android:textColor="#000"/>
+
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/numCard"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        app:strokeColor="@color/colorAccent"
+        app:strokeWidth="1dp"
+        app:cardElevation="0dp"
+        android:layout_centerVertical="true">
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/num"
+            android:layout_margin="20dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Hello World!"
+            android:textSize="30dp"
+            android:fontFamily="@font/jackinput"
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true"
+            android:textIsSelectable="true"/>
+
+    </com.google.android.material.card.MaterialCardView>
+
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/mb1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:inputType="text"
+        android:text="Generate"
+        android:fontFamily="@font/productsans"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@+id/numCard"
+        android:layout_marginTop="20dp"
+        android:backgroundTint="@color/colorAccent"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="20dp">
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/minVal"
+            android:layout_width="match_parent"
+            android:layout_weight="1"
+            android:layout_margin="10dp"
+            android:layout_height="wrap_content"
+            android:inputType="numberSigned"
+            android:fontFamily="@font/productsans"
+            android:hint=" Length (We recommend atleast 8 letters)"/>
+    </LinearLayout>
+
+
+</RelativeLayout>
