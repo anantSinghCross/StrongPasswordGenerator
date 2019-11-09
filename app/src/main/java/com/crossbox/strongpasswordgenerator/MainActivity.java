@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.Toast;
 
 import com.google.android.material.button.MaterialButton;
 import com.google.android.material.textfield.TextInputEditText;
@@ -38,16 +39,19 @@ public class MainActivity extends AppCompatActivity {
         mb.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                int length = Integer.parseInt(lengthEditText.getText().toString());//todo add checks
-                Random rand = new Random();
-                String finalValues = capitalChars + smallChars + numbers + symbols;//todo generalize combination
-                char[] password = new char[length];//todo generalize length
-                for(int i=0;i<length;i++){
-                    password[i] = finalValues.charAt(rand.nextInt(finalValues.length()));
-//                    Log.i("gen",String.valueOf(password[i]));
+                if(lengthEditText.getText().toString().equals("") || Integer.parseInt(lengthEditText.getText().toString())<8){
+                    Toast.makeText(MainActivity.this, "We recommend using atleast 8 characters", Toast.LENGTH_SHORT).show();
                 }
-                t.setText(String.valueOf(password));
-//                Log.i("Password",password.toString());
+                else{
+                    int length = Integer.parseInt(lengthEditText.getText().toString());
+                    Random rand = new Random();
+                    String finalValues = capitalChars + smallChars + numbers + symbols;//todo generalize combination
+                    char[] password = new char[length];
+                    for(int i=0;i<length;i++){
+                        password[i] = finalValues.charAt(rand.nextInt(finalValues.length()));
+                    }
+                    t.setText(String.valueOf(password));
+                }
             }
         });
     }
