@@ -41,8 +41,8 @@ public class MainActivity extends AppCompatActivity {
                 int length = Integer.parseInt(lengthEditText.getText().toString());//todo add checks
                 Random rand = new Random();
                 String finalValues = capitalChars + smallChars + numbers + symbols;//todo generalize combination
-                char[] password = new char[10];//todo generalize length
-                for(int i=0;i<10;i++){
+                char[] password = new char[length];//todo generalize length
+                for(int i=0;i<length;i++){
                     password[i] = finalValues.charAt(rand.nextInt(finalValues.length()));
 //                    Log.i("gen",String.valueOf(password[i]));
                 }
