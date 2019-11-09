@@ -38,6 +38,7 @@ public class MainActivity extends AppCompatActivity {
         mb.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                int length = Integer.parseInt(lengthEditText.getText().toString());//todo add checks
                 Random rand = new Random();
                 String finalValues = capitalChars + smallChars + numbers + symbols;//todo generalize combination
                 char[] password = new char[10];//todo generalize length
