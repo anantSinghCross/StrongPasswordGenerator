@@ -52,6 +52,9 @@ public class MainActivity extends AppCompatActivity {
                 if(lengthEditText.getText().toString().equals("") || Integer.parseInt(lengthEditText.getText().toString())<8){
                     Toast.makeText(MainActivity.this, "We recommend using atleast 8 characters", Toast.LENGTH_SHORT).show();
                 }
+                else if(!capsCheck.isChecked() && !smallsCheck.isChecked() && !numsCheck.isChecked() && !symsCheck.isChecked()){
+                    Toast.makeText(MainActivity.this, "Check atleast one checkbox", Toast.LENGTH_SHORT).show();
+                }
                 else{
                     String finalValues = "";
                     if(capsCheck.isChecked()){

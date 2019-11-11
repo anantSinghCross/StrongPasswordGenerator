@@ -86,9 +86,10 @@
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/minVal"
                     android:layout_width="match_parent"
-                    android:layout_marginStart="5dp"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginEnd="10dp"
                     android:layout_height="wrap_content"
-                    android:inputType="numberSigned"
+                    android:inputType="number"
                     android:fontFamily="@font/productsans"
                     android:textAlignment="center"/>
             </LinearLayout>
@@ -133,7 +134,6 @@
         android:layout_below="@+id/numCard"
         android:layout_marginTop="20dp"
         android:backgroundTint="@color/colorAccent"/>
-4
 
 
 </RelativeLayout>
