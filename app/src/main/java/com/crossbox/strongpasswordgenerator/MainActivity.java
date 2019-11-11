@@ -8,6 +8,7 @@ import android.view.View;
 import android.widget.Toast;
 
 import com.google.android.material.button.MaterialButton;
+import com.google.android.material.checkbox.MaterialCheckBox;
 import com.google.android.material.textfield.TextInputEditText;
 import com.google.android.material.textview.MaterialTextView;
 
@@ -22,6 +23,11 @@ public class MainActivity extends AppCompatActivity {
     String smallChars;
     String numbers ;
     String symbols ;
+    MaterialCheckBox capsCheck;
+    MaterialCheckBox smallsCheck;
+    MaterialCheckBox numsCheck;
+    MaterialCheckBox symsCheck;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,6 +41,10 @@ public class MainActivity extends AppCompatActivity {
         mb = findViewById(R.id.mb1);
         t = findViewById(R.id.num);
         lengthEditText = findViewById(R.id.minVal);
+        capsCheck = findViewById(R.id.caps);
+        smallsCheck = findViewById(R.id.smalls);
+        numsCheck = findViewById(R.id.numbers);
+        symsCheck = findViewById(R.id.syms);
 
         mb.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -43,9 +53,22 @@ public class MainActivity extends AppCompatActivity {
                     Toast.makeText(MainActivity.this, "We recommend using atleast 8 characters", Toast.LENGTH_SHORT).show();
                 }
                 else{
+                    String finalValues = "";
+                    if(capsCheck.isChecked()){
+                        finalValues += capitalChars;
+                    }
+                    if(smallsCheck.isChecked()){
+                        finalValues += smallChars;
+                    }
+                    if(numsCheck.isChecked()){
+                        finalValues += numbers;
+                    }
+                    if(symsCheck.isChecked()){
+                        finalValues += symbols;
+                    }
+
                     int length = Integer.parseInt(lengthEditText.getText().toString());
                     Random rand = new Random();
-                    String finalValues = capitalChars + smallChars + numbers + symbols;//todo generalize combination
                     char[] password = new char[length];
                     for(int i=0;i<length;i++){
                         password[i] = finalValues.charAt(rand.nextInt(finalValues.length()));
