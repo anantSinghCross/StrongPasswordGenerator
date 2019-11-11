@@ -12,17 +12,28 @@
         android:layout_height="wrap_content"
         android:text="Password Generator"
         android:fontFamily="@font/productsans"
-        android:layout_margin="30dp"
-        android:textSize="23dp"
+        android:layout_margin="50dp"
+        android:textSize="24dp"
         android:layout_centerHorizontal="true"
         android:textColor="#000"/>
-<!--todo make a control panel for the checkboxes-->
+
+    <com.google.android.material.textview.MaterialTextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/productsans"
+        android:textColor="@color/colorAccent"
+        android:layout_above="@+id/controlpanel"
+        android:text="Control Panel"
+        android:layout_marginLeft="40dp"
+        android:layout_marginBottom="5dp"/>
     <com.google.android.material.card.MaterialCardView
         android:id="@+id/controlpanel"
         android:layout_width="match_parent"
         android:layout_centerHorizontal="true"
         app:strokeColor="@color/colorAccent"
-        android:layout_margin="30dp"
+        android:layout_marginBottom="30dp"
+        android:layout_marginLeft="30dp"
+        android:layout_marginRight="30dp"
         app:strokeWidth="1dp"
         app:cardElevation="0dp"
         android:layout_below="@+id/name"
@@ -36,24 +47,28 @@
             <com.google.android.material.checkbox.MaterialCheckBox
                 android:id="@+id/caps"
                 android:textSize="20dp"
+                android:fontFamily="@font/productsans"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text=" Include Capital Letters"/>
             <com.google.android.material.checkbox.MaterialCheckBox
                 android:id="@+id/smalls"
                 android:textSize="20dp"
+                android:fontFamily="@font/productsans"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text=" Include Small Letters"/>
             <com.google.android.material.checkbox.MaterialCheckBox
                 android:id="@+id/numbers"
                 android:textSize="20dp"
+                android:fontFamily="@font/productsans"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text=" Include Numbers"/>
             <com.google.android.material.checkbox.MaterialCheckBox
                 android:id="@+id/syms"
                 android:textSize="20dp"
+                android:fontFamily="@font/productsans"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text=" Include Special Characters"/>
@@ -64,6 +79,7 @@
                 <com.google.android.material.textview.MaterialTextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:fontFamily="@font/productsans"
                     android:textSize="20dp"
                     android:textColor="#000"
                     android:text="Length"/>
