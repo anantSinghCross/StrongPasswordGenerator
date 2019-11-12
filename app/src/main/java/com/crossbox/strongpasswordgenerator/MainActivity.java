@@ -48,6 +48,8 @@ public class MainActivity extends AppCompatActivity {
         numsCheck = findViewById(R.id.numbers);
         symsCheck = findViewById(R.id.syms);
         splEditText = findViewById(R.id.splEditText);
+        flag = true;
+
 
         mb.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -74,6 +76,12 @@ public class MainActivity extends AppCompatActivity {
                             flag = false;
                             Toast.makeText(MainActivity.this, "Please enter some characters", Toast.LENGTH_SHORT).show();
                         }else{
+                            String spl = splEditText.getText().toString();
+                            for(int i=0;i<spl.length();i++){
+                                if(spl.charAt(i)==' '){
+
+                                }
+                            }
                             flag = true;
                             symbols = splEditText.getText().toString();
                             finalValues += symbols;
@@ -87,7 +95,6 @@ public class MainActivity extends AppCompatActivity {
                             password[i] = finalValues.charAt(rand.nextInt(finalValues.length()));
                         }
                         t.setText(String.valueOf(password));
-
                     }
 
                 }
