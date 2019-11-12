@@ -18,6 +18,7 @@ public class MainActivity extends AppCompatActivity {
 
     MaterialButton mb ;
     TextInputEditText lengthEditText;
+    TextInputEditText splEditText;
     MaterialTextView t ;
     String capitalChars;
     String smallChars;
@@ -27,6 +28,8 @@ public class MainActivity extends AppCompatActivity {
     MaterialCheckBox smallsCheck;
     MaterialCheckBox numsCheck;
     MaterialCheckBox symsCheck;
+    boolean flag;
+
 
 
     @Override
@@ -37,7 +40,6 @@ public class MainActivity extends AppCompatActivity {
         capitalChars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
         smallChars = "abcdefghijklmnopqrstuvwxyz";
         numbers = "0123456789";
-        symbols = "!@#$%^&*_=+-/.?<>)";
         mb = findViewById(R.id.mb1);
         t = findViewById(R.id.num);
         lengthEditText = findViewById(R.id.minVal);
@@ -45,6 +47,7 @@ public class MainActivity extends AppCompatActivity {
         smallsCheck = findViewById(R.id.smalls);
         numsCheck = findViewById(R.id.numbers);
         symsCheck = findViewById(R.id.syms);
+        splEditText = findViewById(R.id.splEditText);
 
         mb.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -67,16 +70,26 @@ public class MainActivity extends AppCompatActivity {
                         finalValues += numbers;
                     }
                     if(symsCheck.isChecked()){
-                        finalValues += symbols;
+                        if(splEditText.getText().toString().equals("")){
+                            flag = false;
+                            Toast.makeText(MainActivity.this, "Please enter some characters", Toast.LENGTH_SHORT).show();
+                        }else{
+                            flag = true;
+                            symbols = splEditText.getText().toString();
+                            finalValues += symbols;
+                        }
+                    }
+                    if(flag == true){
+                        int length = Integer.parseInt(lengthEditText.getText().toString());
+                        Random rand = new Random();
+                        char[] password = new char[length];
+                        for(int i=0;i<length;i++){
+                            password[i] = finalValues.charAt(rand.nextInt(finalValues.length()));
+                        }
+                        t.setText(String.valueOf(password));
+
                     }
 
-                    int length = Integer.parseInt(lengthEditText.getText().toString());
-                    Random rand = new Random();
-                    char[] password = new char[length];
-                    for(int i=0;i<length;i++){
-                        password[i] = finalValues.charAt(rand.nextInt(finalValues.length()));
-                    }
-                    t.setText(String.valueOf(password));
                 }
             }
         });
