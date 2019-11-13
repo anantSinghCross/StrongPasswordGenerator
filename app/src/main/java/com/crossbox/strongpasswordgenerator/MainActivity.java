@@ -2,6 +2,9 @@ package com.crossbox.strongpasswordgenerator;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.ClipData;
+import android.content.ClipboardManager;
+import android.content.Context;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -17,6 +20,7 @@ import java.util.Random;
 public class MainActivity extends AppCompatActivity {
 
     MaterialButton mb ;
+    MaterialButton copyButton;
     TextInputEditText lengthEditText;
     TextInputEditText splEditText;
     MaterialTextView t ;
@@ -41,6 +45,7 @@ public class MainActivity extends AppCompatActivity {
         smallChars = "abcdefghijklmnopqrstuvwxyz";
         numbers = "0123456789";
         mb = findViewById(R.id.mb1);
+        copyButton = findViewById(R.id.copy);
         t = findViewById(R.id.num);
         lengthEditText = findViewById(R.id.minVal);
         capsCheck = findViewById(R.id.caps);
@@ -50,10 +55,19 @@ public class MainActivity extends AppCompatActivity {
         splEditText = findViewById(R.id.splEditText);
         flag = true;
 
+        copyButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                ClipboardManager clipboardManager = (ClipboardManager) getSystemService(Context.CLIPBOARD_SERVICE);
+                ClipData clipData = ClipData.newPlainText("Data", t.getText().toString());
+                clipboardManager.setPrimaryClip(clipData);
+            }
+        });
 
         mb.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                flag = true;
                 if(lengthEditText.getText().toString().equals("") || Integer.parseInt(lengthEditText.getText().toString())<8){
                     Toast.makeText(MainActivity.this, "We recommend using atleast 8 characters", Toast.LENGTH_SHORT).show();
                 }
@@ -79,10 +93,10 @@ public class MainActivity extends AppCompatActivity {
                             String spl = splEditText.getText().toString();
                             for(int i=0;i<spl.length();i++){
                                 if(spl.charAt(i)==' '){
-
+                                    flag = false;
+                                    Toast.makeText(MainActivity.this, "Character sequence must not contain spaces", Toast.LENGTH_SHORT).show();
                                 }
                             }
-                            flag = true;
                             symbols = splEditText.getText().toString();
                             finalValues += symbols;
                         }
@@ -101,4 +115,6 @@ public class MainActivity extends AppCompatActivity {
             }
         });
     }
+
+
 }
